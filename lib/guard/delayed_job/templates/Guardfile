@@ -1,0 +1,2 @@
+guard 'delayed_job' do
+end
