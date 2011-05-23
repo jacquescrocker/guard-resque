@@ -42,3 +42,5 @@ you make.
 == Authors
 
 [David Parry](http://github.com/suranyami)
+
+This gem is based on [Guard::WEBrick](http://github.com/fnichol/guard-webrick).
