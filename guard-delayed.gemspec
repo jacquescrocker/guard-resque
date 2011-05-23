@@ -4,7 +4,7 @@ require "guard/delayed/version"
 
 Gem::Specification.new do |s|
   s.name        = "guard-delayed"
-  s.version     = Guard::DelayedJobVersion::VERSION
+  s.version     = Guard::DelayedVersion::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["David Parry"]
   s.email       = ["david.parry@suranyami.com"]

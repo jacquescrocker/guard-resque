@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Guard::DelayedJob do
-  subject { Guard::DelayedJob.new }
+describe Guard::Delayed do
+  subject { Guard::Delayed.new }
 
   describe "start" do
     before do
-      subject = Guard::DelayedJob.new
+      subject = Guard::Delayed.new
     end
 
     after do
