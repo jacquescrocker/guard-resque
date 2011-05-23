@@ -1,6 +1,6 @@
-# Guard::delayed_job
+# Guard::Delayed
 
-Guard::delayed_job automatically starts/stops/restarts delayed_job
+Guard::Delayed automatically starts/stops/restarts delayed_job
 
 ## Install
 
@@ -8,15 +8,15 @@ Please be sure to have [Guard](http://github.com/guard/guard) installed before c
 
 Install the gem:
 
-    gem install guard-delayed_job
+    gem install guard-delayed
 
 Add it to your Gemfile (inside test group):
 
-    gem 'guard-delayed_job'
+    gem 'guard-delayed'
 
 Add guard definition to your Guardfile by running this command:
 
-    guard init delayed_job
+    guard init delayed
 
 ## Usage
 
@@ -27,14 +27,14 @@ being active.
 
 ## Guardfile
 
-    guard 'delayed_job' do
+    guard 'delayed' do
       watch()
     end
 
 ## Development
 
-* Source hosted at [GitHub](http://github.com/suranyami/guard-delayed_job)
-* Report issues/Questions/Feature requests on [GitHub Issues](http://github.com/suranyami/guard-delayed_job/issues)
+* Source hosted at [GitHub](http://github.com/suranyami/guard-delayed)
+* Report issues/Questions/Feature requests on [GitHub Issues](http://github.com/suranyami/guard-delayed/issues)
 
 Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change
 you make.

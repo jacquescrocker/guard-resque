@@ -1,4 +1,4 @@
 source "http://rubygems.org"
 
-# Specify your gem's dependencies in guard-delayed_job.gemspec
+# Specify your gem's dependencies in guard-delayed.gemspec
 gemspec

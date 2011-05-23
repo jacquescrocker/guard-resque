@@ -1,5 +1,5 @@
 require 'rspec'
-require 'guard/delayed_job'
+require 'guard/delayed'
 
 ENV["GUARD_ENV"] = 'test'
 
