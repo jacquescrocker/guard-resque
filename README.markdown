@@ -1,6 +1,6 @@
-# Guard::DelayedJob
+# Guard::delayed_job
 
-Guard::DelayedJob automatically starts/stops/restarts delayed_job
+Guard::delayed_job automatically starts/stops/restarts delayed_job
 
 ## Install
 

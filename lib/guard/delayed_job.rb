@@ -9,13 +9,13 @@ module Guard
     end
 
     def start
-      UI.info "Starting up DelayedJob..."
+      UI.info "Starting up delayed_job..."
       system('script/delayed_job', 'start')
     end
 
     # Called on Ctrl-C signal (when Guard quits)
     def stop
-      UI.info "Starting up DelayedJob..."
+      UI.info "Starting up delayed_job..."
       system('script/delayed_job', 'stop')
     end
 

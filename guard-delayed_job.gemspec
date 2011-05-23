@@ -1,16 +1,19 @@
-# -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
+
+# # -*- encoding: utf-8 -*-
+paths = File.expand_path("../lib", __FILE__)
+$:.push paths
+puts paths
 require "guard/delayed_job/version"
 
 Gem::Specification.new do |s|
   s.name        = "guard-delayed_job"
-  s.version     = Guard::Delayedjob::VERSION
+  s.version     = Guard::DelayedJobVersion::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["David Parry"]
   s.email       = ["david.parry@suranyami.com"]
   s.homepage    = 'http://rubygems.org/gems/guard-delayed_job'
   s.summary     = %q{guard gem for delayed_job}
-  s.description = %q{Guard::DelayedJob automatically starts/stops/restarts delayed_job}
+  s.description = %q{Guard::delayed_job automatically starts/stops/restarts delayed_job}
 
   s.required_rubygems_version = '>= 1.3.6'
   s.rubyforge_project = "guard-delayed_job"
