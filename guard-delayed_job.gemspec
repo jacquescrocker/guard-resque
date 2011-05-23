@@ -1,8 +1,5 @@
-
-# # -*- encoding: utf-8 -*-
-paths = File.expand_path("../lib", __FILE__)
-$:.push paths
-puts paths
+# -*- encoding: utf-8 -*-
+$:.push File.expand_path("../lib", __FILE__)
 require "guard/delayed_job/version"
 
 Gem::Specification.new do |s|
