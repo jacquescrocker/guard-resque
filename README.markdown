@@ -22,13 +22,13 @@ Add guard definition to your Guardfile by running this command:
 
 Please read [Guard usage doc](http://github.com/guard/guard#readme).
 
-I suggest you put your guard definition for delayed_job *before* your tests, if your tests depend on it
+I suggest you put the delayed guard definition *before* your test/rspec guard if your tests depend on it
 being active.
 
 ## Guardfile
 
-    guard 'delayed' do
-      watch()
+    guard 'delayed', :environment => 'development' do
+      watch(%r{^app/(.+)\.rb})
     end
 
 ## Development
@@ -44,3 +44,9 @@ you make.
 [David Parry](http://github.com/suranyami)
 
 This gem is based on [Guard::WEBrick](http://github.com/fnichol/guard-webrick).
+
+## Note
+
+I originally called this `guard-delayed_job` but had all sorts of unexpected behaviour when trying to build the gem.
+After much fruitless investigation it appeared that the underscore was the problem, so I renamed it to `guard-delayed`.
+Anybody else encountered this? Let me know if you have. Thanks in advance.
