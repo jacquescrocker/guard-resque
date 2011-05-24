@@ -16,7 +16,7 @@ module Guard
     # :prefix NAME                String to be prefixed to worker process names
     
     def initialize(watchers = [], options = {})
-      @options = HashWithIndifferentAccess.new(options)
+      @options = options
       super
     end
 
