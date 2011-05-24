@@ -2,6 +2,7 @@
 
  * Changed template to include :environment => 'development'
  * Changed name from 'guard-delayed_job' to 'guard-delayed'
+ * Fixed options passing
 
 ## 0.0.3 (2011-05-23)
 
