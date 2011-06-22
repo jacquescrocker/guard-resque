@@ -9,10 +9,10 @@ module Guard
     # :min_priority e.g. 2
     # :max_priority e.g. 10
     # :number_of_workers e.g. 2
-    # :pid_dir  e.g. tmp/pids                Specifies an alternate directory in which to store the process ids.
-    # :identifier A numeric identifier for the worker.
+    # :pid_dir  e.g. tmp/pids Specifies an alternate directory in which to store the process ids.
+    # :identifier     A numeric identifier for the worker.
     # :monitor                    Start monitor process.
-    # :sleep-delay N              Amount of time to sleep when no jobs are found
+    # :sleep-delay N              Amount of time to sleep in seconds when no jobs are found
     # :prefix NAME                String to be prefixed to worker process names
     
     def initialize(watchers = [], options = {})
@@ -33,7 +33,7 @@ module Guard
       args << "--monitor " if @options[:monitor]
       args << "--sleep-delay #{@options[:sleep_delay]} " if @options[:sleep_delay]
       args << "--prefix #{@options[:prefix]} " if @options[:prefix]
-      system('script/delayed_job', 'start')
+      system('script/delayed_job', args)
     end
 
     # Called on Ctrl-C signal (when Guard quits)
@@ -45,7 +45,7 @@ module Guard
     # Called on Ctrl-Z signal
     # This method should be mainly used for "reload" (really!) actions like reloading passenger/spork/bundler/...
     def reload
-      UI.info "Stopping delayed_job..."
+      UI.info "Restarting delayed_job..."
       restart
     end
 
