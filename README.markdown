@@ -33,13 +33,24 @@ being active.
 
 ## Development
 
-* Source hosted at [GitHub](http://github.com/suranyami/guard-delayed)
-* Report issues/Questions/Feature requests on [GitHub Issues](http://github.com/suranyami/guard-delayed/issues)
+ * Source hosted at [GitHub](http://github.com/suranyami/guard-delayed)
+ * Report issues/Questions/Feature requests on [GitHub Issues](http://github.com/suranyami/guard-delayed/issues)
 
 Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change
 you make.
 
-== Authors
+## Building and deploying gem
+
+ * Update the version number in `lib/guard/delayed/version.rb`
+ * Update `CHANGELOG.md`
+ * Build the gem:
+ 
+    gem build guard-delayed.gemspec
+    
+ * 
+    
+
+## Authors
 
 [David Parry](http://github.com/suranyami)
 
