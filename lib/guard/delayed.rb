@@ -21,25 +21,24 @@ module Guard
     end
 
     def start
-      system('script/delayed_job', 'stop')
+      system(cmd, 'stop')
       UI.info "Starting up delayed_job..."
       args = "start"
-      args << "--environment=#{@options[:environment]} " if @options[:environment]
-      args << "--min-priority #{@options[:min_priority]} " if @options[:min_priority]
-      args << "--max-priority #{@options[:max_priority]} " if @options[:max_priority]
-      args << "--number_of_workers=#{@options[:number_of_workers]} " if @options[:number_of_workers]
-      args << "--pid-dir=#{@options[:pid_dir]} " if @options[:pid_dir]
-      args << "--identifier=#{@options[:identifier]} " if @options[:identifier]
-      args << "--monitor " if @options[:monitor]
-      args << "--sleep-delay #{@options[:sleep_delay]} " if @options[:sleep_delay]
-      args << "--prefix #{@options[:prefix]} " if @options[:prefix]
-      system('script/delayed_job', args)
+      args << " --min-priority #{@options[:min_priority]}" if @options[:min_priority]
+      args << " --max-priority #{@options[:max_priority]}" if @options[:max_priority]
+      args << " --number_of_workers=#{@options[:number_of_workers]}" if @options[:number_of_workers]
+      args << " --pid-dir=#{@options[:pid_dir]}" if @options[:pid_dir]
+      args << " --identifier=#{@options[:identifier]}" if @options[:identifier]
+      args << " --monitor" if @options[:monitor]
+      args << " --sleep-delay #{@options[:sleep_delay]}" if @options[:sleep_delay]
+      args << " --prefix #{@options[:prefix]} " if @options[:prefix]
+      system(cmd, args)
     end
 
     # Called on Ctrl-C signal (when Guard quits)
     def stop
       UI.info "Stopping delayed_job..."
-      system('script/delayed_job', 'stop')
+      system(cmd, 'stop')
     end
 
     # Called on Ctrl-Z signal
@@ -63,7 +62,13 @@ module Guard
     private
     
     def restart
-      system('script/delayed_job', 'restart')
+      system(cmd, 'restart')
+    end
+    
+    def cmd
+      command = "script/delayed_job"
+      command = "RAILS_ENV=#{@options[:environment]} #{command}" if @options[:environment]
+      command
     end
   end
 end
