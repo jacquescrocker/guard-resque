@@ -1,3 +1,8 @@
+## 0.1.0 (2011-07-28)
+
+ * Fixed options for current delayed_job version (from dbloete)
+ * Environment settings needed to be passed in via RAILS_ENV=
+ 
 ## 0.0.9 (2011-06-22)
 
  * Fixed argument passing to the start script

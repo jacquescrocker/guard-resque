@@ -39,6 +39,10 @@ being active.
 Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change
 you make.
 
+## Testing the gem locally
+
+    gem install guard-delayed-0.1.1.gem
+
 ## Building and deploying gem
 
  * Update the version number in `lib/guard/delayed/version.rb`
@@ -47,14 +51,17 @@ you make.
  
     gem build guard-delayed.gemspec
     
- * 
+ * Push to rubygems.org:
+ 
+    gem push guard-delayed-0.1.1.gem
     
 
 ## Authors
 
-[David Parry](http://github.com/suranyami)
+[David Parry](https://github.com/suranyami)
+[Dennis Reimann](https://github.com/dbloete)
 
-This gem is based on [Guard::WEBrick](http://github.com/fnichol/guard-webrick).
+Ideas for this gem came from [Guard::WEBrick](http://github.com/fnichol/guard-webrick).
 
 ## Note
 
