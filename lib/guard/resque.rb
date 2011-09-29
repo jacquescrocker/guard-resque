@@ -13,28 +13,26 @@ module Guard
     # :stop_signal e.g. KILL
     def initialize(watchers = [], options = {})
       @options = options
-      @process = nil
       @pid = nil
-      @stop_signal = options[:stop_signal] || "TERM"
+      @stop_signal = options[:stop_signal] || "KILL"
       super
     end
 
     def start
       stop
       UI.info "Starting up resque..."
-      @process = IO.popen(cmd)
-      @pid = @process.pid
+      UI.info cmd
+      @pid = spawn(cmd)
     end
 
     # Called on Ctrl-C signal (when Guard quits)
     def stop
-      if @process
+      if @pid
         UI.info("Stopping resque...")
-        ::Process.kill(@stop_signal, @process.pid)
+        ::Process.kill(@stop_signal, @pid)
         ::Process.waitpid(@pid) rescue Errno::ESRCH
-        @process.close
         @pid = nil
-        UI.info("Stopped process #{@name}")
+        UI.info("Stopped process resque")
       end
     end
 
@@ -42,8 +40,7 @@ module Guard
     # This method should be mainly used for "reload" (really!) actions like reloading passenger/spork/bundler/...
     def reload
       UI.info "Restarting resque..."
-      stop
-      start
+      restart
     end
 
     # Called on Ctrl-/ signal
@@ -55,6 +52,11 @@ module Guard
     # Called on file(s) modifications
     def run_on_change(paths)
       restart
+    end
+
+    def restart
+      stop
+      start
     end
 
     private
