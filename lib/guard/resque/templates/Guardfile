@@ -1,0 +1,4 @@
+guard 'resque', :environment => 'development' do
+  watch(%r{^app/(.+)\.rb})
+  watch(%r{^lib/(.+)\.rb})
+end

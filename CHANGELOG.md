@@ -1,3 +1,10 @@
+## 0.0.1
+
+ * Forked from guard-delayed and started guard-resque
+
+
+-- guard-delayed --
+
 ## 0.1.0 (2011-07-28)
 
  * Fixed options for current delayed_job version (from dbloete)
