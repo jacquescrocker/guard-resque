@@ -40,6 +40,7 @@ You can customize the resque task via the following options:
 * `environment`: the rails environment to run the workers in (defaults to `"development"`)
 * `task`: the name of the rake task to use (defaults to `"resque:work"`)
 * `queue`: the resque queue to run (defaults to `"*"`)
+* `count`: the number of workers to include (defaults to `"1"`)
 * `verbose`: whether to use verbose logging (defaults to `false`)
 * `trace`: whether to include `--trace` on the rake command (defaults to `false`)
 * `stop_signal`: how to kill the process when restarting (defaults to `KILL`)
