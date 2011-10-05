@@ -8,6 +8,7 @@ module Guard
     # :environment  e.g. 'test'
     # :task .e.g 'resque:work'
     # :queue e.g. '*'
+    # :count e.g. 3
     # :verbose e.g. true
     # :trace e.g. true
     # :stop_signal e.g. KILL
@@ -69,6 +70,9 @@ module Guard
 
       # queue setting
       command << "QUEUE=#{@options[:queue] || '*'} "
+
+      #count setting
+      command << "COUNT=#{@options[:count] || '1'} "
 
       # verbose setting
       command << "VVERBOSE=1 " if @options[:verbose]

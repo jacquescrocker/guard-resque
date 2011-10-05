@@ -1,3 +1,9 @@
+# other available options
+# :task (defaults to resque:work)
+# :verbose 
+# :trace
+# :queue (defaults to "*")
+# :count (defaults to 1)
 guard 'resque', :environment => 'development' do
   watch(%r{^app/(.+)\.rb})
   watch(%r{^lib/(.+)\.rb})
