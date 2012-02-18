@@ -11,11 +11,11 @@ module Guard
     # :count e.g. 3
     # :verbose e.g. true
     # :trace e.g. true
-    # :stop_signal e.g. KILL
+    # :stop_signal e.g. QUIT
     def initialize(watchers = [], options = {})
       @options = options
       @pid = nil
-      @stop_signal = options[:stop_signal] || "KILL"
+      @stop_signal = options[:stop_signal] || "QUIT"
       super
     end
 
