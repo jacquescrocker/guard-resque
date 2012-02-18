@@ -41,18 +41,29 @@ module Guard
     # Called on Ctrl-C signal (when Guard quits)
     def stop
       if @pid
-        UI.info("Stopping resque...")
-        ::Process.kill(@stop_signal, @pid)
-        ::Process.waitpid(@pid) rescue Errno::ESRCH
-        @pid = nil
-        UI.info("Stopped process resque")
+        UI.info 'Stopping resque...'
+        ::Process.kill @stop_signal, @pid
+        begin
+          Timeout.timeout(15) do
+            ::Process.wait @pid
+          end
+        rescue Timeout::Error
+          UI.info 'Sending SIGKILL to resque, as it\'s taking too long to shutdown.'
+          ::Process.kill :KILL, @pid
+          ::Process.wait @pid
+        end
+        UI.info 'Stopped process resque'
       end
+    rescue Errno::ESRCH
+      UI.info 'Guard::Resque lost the Resque worker subprocess!'
+    ensure
+      @pid = nil
     end
 
     # Called on Ctrl-Z signal
     # This method should be mainly used for "reload" (really!) actions like reloading passenger/spork/bundler/...
     def reload
-      UI.info "Restarting resque..."
+      UI.info 'Restarting resque...'
       restart
     end
 
