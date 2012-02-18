@@ -1,4 +1,11 @@
-## 0.0.1
+## 0.0.4
+
+ * Add a :vverbose option to distinguish from the :verbose option
+ * Add a timeout when killing Resque, to force it with SIGKILL
+ * Change the way the #spawn call is made, so it doesn't create a subshell to launch
+   Resque, which was causing issue #2
+
+## 0.0.3
 
  * Forked from guard-delayed and started guard-resque
 
@@ -9,7 +16,7 @@
 
  * Fixed options for current delayed_job version (from dbloete)
  * Environment settings needed to be passed in via RAILS_ENV=
- 
+
 ## 0.0.9 (2011-06-22)
 
  * Fixed argument passing to the start script
