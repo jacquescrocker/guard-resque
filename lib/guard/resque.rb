@@ -38,7 +38,6 @@ module Guard
       @pid = spawn(env, cmd)
     end
 
-    # Called on Ctrl-C signal (when Guard quits)
     def stop
       if @pid
         UI.info 'Stopping resque...'
@@ -61,14 +60,12 @@ module Guard
     end
 
     # Called on Ctrl-Z signal
-    # This method should be mainly used for "reload" (really!) actions like reloading passenger/spork/bundler/...
     def reload
       UI.info 'Restarting resque...'
       restart
     end
 
     # Called on Ctrl-/ signal
-    # This method should be principally used for long action like running all specs/tests/...
     def run_all
       true
     end
