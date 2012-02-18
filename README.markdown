@@ -32,18 +32,19 @@ being active.
     guard 'resque', :environment => 'development' do
       watch(%r{^app/(.+)\.rb})
     end
-    
+
 ## Options
 
 You can customize the resque task via the following options:
 
-* `environment`: the rails environment to run the workers in (defaults to `"development"`)
+* `environment`: the rails environment to run the workers in (defaults to `nil`)
 * `task`: the name of the rake task to use (defaults to `"resque:work"`)
 * `queue`: the resque queue to run (defaults to `"*"`)
-* `count`: the number of workers to include (defaults to `"1"`)
-* `verbose`: whether to use verbose logging (defaults to `false`)
-* `trace`: whether to include `--trace` on the rake command (defaults to `false`)
-* `stop_signal`: how to kill the process when restarting (defaults to `KILL`)
+* `count`: the number of workers to include (defaults to `1`)
+* `verbose`: whether to use verbose logging (defaults to `nil`)
+* `vverbose`: whether to use very verbose logging (defaults to `nil`)
+* `trace`: whether to include `--trace` on the rake command (defaults to `nil`)
+* `stop_signal`: how to kill the process when restarting (defaults to `QUIT`)
 
 
 ## Development
@@ -63,13 +64,13 @@ you make.
  * Update the version number in `lib/guard/resque/version.rb`
  * Update `CHANGELOG.md`
  * Build the gem:
- 
+
     gem build guard-resque.gemspec
-    
+
  * Push to rubygems.org:
- 
+
     gem push guard-resque-0.x.x.gem
-    
+
 
 ## Guard::Delayed Authors
 

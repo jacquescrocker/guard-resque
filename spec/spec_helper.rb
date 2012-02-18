@@ -1,7 +1,7 @@
 require 'rspec'
 require 'guard/resque'
 
-ENV["GUARD_ENV"] = 'test'
+ENV['GUARD_ENV'] = 'test'
 
 RSpec.configure do |config|
   config.color_enabled = true

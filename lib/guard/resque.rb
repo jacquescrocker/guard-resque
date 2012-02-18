@@ -4,26 +4,38 @@ require 'guard/guard'
 module Guard
   class Resque < Guard
 
+    DEFAULT_SIGNAL = :QUIT
+    DEFAULT_QUEUE = '*'.freeze
+    DEFAULT_COUNT = 1
+    DEFAULT_TASK_SINGLE = 'resque:work'.freeze
+    DEFAULT_TASK_MULTIPLE = 'resque:workers'.freeze
+
     # Allowable options are:
-    # :environment  e.g. 'test'
-    # :task .e.g 'resque:work'
-    # :queue e.g. '*'
-    # :count e.g. 3
-    # :verbose e.g. true
-    # :trace e.g. true
-    # :stop_signal e.g. QUIT
+    #  - :environment  e.g. 'test'
+    #  - :task .e.g 'resque:work'
+    #  - :queue e.g. '*'
+    #  - :count e.g. 3
+    #  - :verbose e.g. true
+    #  - :vverbose e.g. true
+    #  - :trace e.g. true
+    #  - :stop_signal e.g. :QUIT or :SIGQUIT
     def initialize(watchers = [], options = {})
       @options = options
       @pid = nil
-      @stop_signal = options[:stop_signal] || "QUIT"
+      @stop_signal = options[:stop_signal] || DEFAULT_SIGNAL
+      @options[:queue] ||= DEFAULT_QUEUE
+      @options[:count] ||= DEFAULT_COUNT
+      @options[:task] ||= (@options[:count].to_i == 1) ? DEFAULT_TASK_SINGLE : DEFAULT_TASK_MULTIPLE
       super
     end
 
     def start
       stop
-      UI.info "Starting up resque..."
-      UI.info cmd
-      @pid = spawn(cmd)
+      UI.info 'Starting up resque...'
+      UI.info [ cmd, env.map{|v| v.join('=')} ].join(' ')
+
+      # launch Resque worker
+      @pid = spawn(env, cmd)
     end
 
     # Called on Ctrl-C signal (when Guard quits)
@@ -63,27 +75,25 @@ module Guard
     private
 
     def cmd
-      command = "bundle exec rake "
-
-      # environment setting
-      command << "RAILS_ENV=#{@options[:environment]} " if @options[:environment]
-
-      # queue setting
-      command << "QUEUE=#{@options[:queue] || '*'} "
-
-      #count setting
-      command << "COUNT=#{@options[:count] || '1'} "
-
-      # verbose setting
-      command << "VVERBOSE=1 " if @options[:verbose]
-
-      # task setting
-      command << "#{@options[:task] || 'resque:work'} "
+      command = ['bundle exec rake', @options[:task].to_s]
 
       # trace setting
-      command << "--trace " if @options[:trace]
+      command << '--trace' if @options[:trace]
 
-      command
+      return command.join(' ')
+    end
+
+    def env
+      var = Hash.new
+
+      var['QUEUE']     = @options[:queue].to_s       if @options[:queue]
+      var['COUNT']     = @options[:count].to_s       if @options[:count]
+      var['RAILS_ENV'] = @options[:environment].to_s if @options[:environment]
+
+      var['VERBOSE']  = '1' if @options[:verbose]
+      var['VVERBOSE'] = '1' if @options[:vverbose]
+
+      return var
     end
   end
 end
