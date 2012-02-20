@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "guard-resque"
   s.version     = Guard::ResqueVersion::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Jacques Crocker", "David Parry"]
-  s.email       = ["railsjedi@gmail.com"]
+  s.authors     = ["Jacques Crocker", "Ryan Long", "David Parry"]
+  s.email       = ["railsjedi@gmail.com", 'ryan@rtlong.com']
   s.homepage    = 'http://github.com/railsjedi/guard-resque'
   s.summary     = %q{guard gem for resque}
   s.description = %q{Guard::Resque automatically starts/stops/restarts resque worker}
@@ -18,7 +18,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'guard', '>= 0.8'
   s.add_dependency 'resque'
 
-  s.add_development_dependency 'bundler',       '~> 1.0.10'
+  s.add_development_dependency 'bundler'
+  s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec',         '~> 2.5.0'
   s.add_development_dependency 'guard-rspec',   '>= 0.2.0'
   s.add_development_dependency 'guard-bundler', '>= 0.1.1'
