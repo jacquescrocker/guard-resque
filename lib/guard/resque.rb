@@ -95,7 +95,7 @@ module Guard
     def env
       var = Hash.new
 
-      var['INVERVAL']  = @options[:interval].to_s    if @options[:interval]
+      var['INTERVAL']  = @options[:interval].to_s    if @options[:interval]
       var['QUEUE']     = @options[:queue].to_s       if @options[:queue]
       var['COUNT']     = @options[:count].to_s       if @options[:count]
       var['RAILS_ENV'] = @options[:environment].to_s if @options[:environment]
