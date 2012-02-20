@@ -40,6 +40,7 @@ You can customize the resque task via the following options:
 * `environment`: the rails environment to run the workers in (defaults to `nil`)
 * `task`: the name of the rake task to use (defaults to `"resque:work"`)
 * `queue`: the resque queue to run (defaults to `"*"`)
+* `interval`: the interval to use for checking for new resque jobs (defaults to `5`)
 * `count`: the number of workers to include (defaults to `1`)
 * `verbose`: whether to use verbose logging (defaults to `nil`)
 * `vverbose`: whether to use very verbose logging (defaults to `nil`)

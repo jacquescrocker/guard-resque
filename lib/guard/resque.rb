@@ -15,6 +15,7 @@ module Guard
     #  - :task .e.g 'resque:work'
     #  - :queue e.g. '*'
     #  - :count e.g. 3
+    #  - :interval e.g. 5
     #  - :verbose e.g. true
     #  - :vverbose e.g. true
     #  - :trace e.g. true
@@ -94,6 +95,7 @@ module Guard
     def env
       var = Hash.new
 
+      var['INTERVAL']  = @options[:interval].to_s    if @options[:interval]
       var['QUEUE']     = @options[:queue].to_s       if @options[:queue]
       var['COUNT']     = @options[:count].to_s       if @options[:count]
       var['RAILS_ENV'] = @options[:environment].to_s if @options[:environment]
