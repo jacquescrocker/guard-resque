@@ -1,5 +1,6 @@
 require 'guard'
 require 'guard/guard'
+require 'timeout'
 
 module Guard
   class Resque < Guard
@@ -107,3 +108,4 @@ module Guard
     end
   end
 end
+
