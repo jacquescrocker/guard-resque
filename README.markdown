@@ -30,8 +30,12 @@ being active.
 ## Guardfile
 
     guard 'resque', :environment => 'development' do
-      watch(%r{^app/(.+)\.rb})
+      watch(%r{^app/(.+)\.rb$})
+      watch(%r{^lib/(.+)\.rb$})
     end
+
+Feel free to be more specific, for example watching only for `app/models` and `app/jobs`
+to avoid reloading on a javascript file change.
 
 ## Options
 
@@ -86,5 +90,4 @@ Ideas for this gem came from [Guard::WEBrick](http://github.com/fnichol/guard-we
 [Jacques Crocker](https://github.com/railsjedi)
 
 I hacked this together from the `guard-delayed` gem for use with Resque. All credit go to the original authors though. I just search/replaced and tweaked a few things
-
 
