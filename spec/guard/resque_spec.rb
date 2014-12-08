@@ -2,20 +2,20 @@ require 'spec_helper'
 
 describe Guard::Resque do
 
-  let(:default) { instance_double("Guard::Group") }
-  let(:test) { instance_double("Guard::Group") }
+  let(:default) { double("Guard::Group") }
+  let(:test) { double("Guard::Group") }
 
-  let(:session) { instance_double("Guard::Internals::Session") }
-  let(:groups) { instance_double("Guard::Internals::Groups") }
-  let(:state) { instance_double("Guard::Internals::State") }
+  let(:session) { double("Guard::Internals::Session") }
+  let(:groups) { double("Guard::Internals::Groups") }
+  let(:state) { double("Guard::Internals::State") }
 
   before do
-    allow(groups).to receive(:add).with(:default).and_return(default)
-    allow(groups).to receive(:add).with(:test).and_return(test)
+    groups.stub(:add).with(:default).and_return(default)
+    groups.stub(:add).with(:test).and_return(test)
 
-    allow(session).to receive(:groups).and_return(groups)
-    allow(state).to receive(:session).and_return(session)
-    allow(Guard).to receive(:state).and_return(state)
+    session.stub(:groups).and_return(groups)
+    state.stub(:session).and_return(session)
+    Guard.stub(:state).and_return(state)
   end
 
   describe 'start' do
