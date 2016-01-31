@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'guard', '>= 2.0'
   s.add_dependency 'resque'
+  s.add_dependency 'guard-compat', '~> 1.1'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rake'
