@@ -1,4 +1,5 @@
 require 'rspec'
+require 'guard/compat/test/helper'
 require 'guard/resque'
 
 ENV['GUARD_ENV'] = 'test'

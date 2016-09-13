@@ -1,5 +1,4 @@
-require 'guard'
-require 'guard/plugin'
+require 'guard/compat/plugin'
 require 'timeout'
 
 module Guard
@@ -22,13 +21,13 @@ module Guard
     #  - :trace e.g. true
     #  - :stop_signal e.g. :QUIT or :SIGQUIT
     def initialize(options = {})
+      super
       @options = options
       @pid = nil
       @stop_signal = options[:stop_signal] || DEFAULT_SIGNAL
       @options[:queue] ||= DEFAULT_QUEUE
       @options[:count] ||= DEFAULT_COUNT
       @options[:task] ||= (@options[:count].to_i == 1) ? DEFAULT_TASK_SINGLE : DEFAULT_TASK_MULTIPLE
-      super
     end
 
     def start
@@ -108,4 +107,3 @@ module Guard
     end
   end
 end
-
